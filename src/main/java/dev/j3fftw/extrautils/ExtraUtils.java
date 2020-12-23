@@ -6,21 +6,26 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class ExtraUtils {
     
     private static final ExtraUtils extraUtils = new ExtraUtils();
-    private SlimefunPlugin instance;
+    private SlimefunPlugin addon;
     private JavaPlugin plugin;
 
     private ExtraUtils() {}
 
     public static void init(SlimefunPlugin addon) {
-        extraUtils.instance = addon;
+        extraUtils.addon = addon;
         extraUtils.plugin = addon.getJavaPlugin();
     }
 
-    public SlimefunPlugin getInstance() {
-        return instance;
+    public SlimefunPlugin getAddon() {
+        return addon;
     }
 
     public JavaPlugin getPlugin() {
         return plugin;
     }
+
+    public static ExtraUtils getInstance() {
+        return extraUtils;
+    }
+
 }
