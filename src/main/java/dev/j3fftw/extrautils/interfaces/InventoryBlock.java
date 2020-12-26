@@ -3,6 +3,7 @@ package dev.j3fftw.extrautils.interfaces;
 import java.lang.reflect.Array;
 import java.util.function.Consumer;
 
+import javax.annotation.Nonnull;
 import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -62,10 +63,10 @@ public interface InventoryBlock {
             }
 
             @Override
-            public boolean canOpen(Block b, Player p) {
-                return p.hasPermission("slimefun.inventory.bypass")
-                    || (SlimefunPlugin.getProtectionManager().hasPermission(p, b.getLocation(),
-                    ProtectableAction.ACCESS_INVENTORIES) && Slimefun.hasUnlocked(p, item, false)
+            public boolean canOpen(@Nonnull Block block, @Nonnull Player player) {
+                return player.hasPermission("slimefun.inventory.bypass")
+                    || (SlimefunPlugin.getProtectionManager().hasPermission(player, block.getLocation(),
+                    ProtectableAction.ACCESS_INVENTORIES) && Slimefun.hasUnlocked(player, item, false)
                 );
             }
         };
